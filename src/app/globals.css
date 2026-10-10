@@ -1,26 +1,166 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* Departure Mono (SIL OFL 1.1) - see src/app/fonts/DepartureMono-LICENSE.txt */
+@font-face {
+  font-family: "Departure Mono";
+  src: url("./fonts/DepartureMono-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+@theme {
+  --color-ground: #0b0b09;
+  --color-surface: #131311;
+  --color-rule: #2a2a26;
+  --color-rule-strong: #55554c;
+  --color-ink: #edede5;
+  --color-dim: #9c9c92;
+  --color-ghost: #6d6d63;
+  --color-amber: #ffb000;
+
+  --font-mono: "Departure Mono", ui-monospace, SFMono-Regular, Menlo, Consolas,
+    monospace;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  background-color: var(--color-ground);
+  color-scheme: dark;
+  scrollbar-color: var(--color-rule-strong) var(--color-ground);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-ground);
+  color: var(--color-ink);
+  font-family: var(--font-mono);
+  font-synthesis: none;
+  font-smooth: never;
+  -webkit-font-smoothing: none;
+  text-rendering: geometricPrecision;
+}
+
+::selection {
+  background-color: var(--color-amber);
+  color: var(--color-ground);
+}
+
+:where(a, button, [tabindex]):focus-visible {
+  outline: 2px solid var(--color-amber);
+  outline-offset: 3px;
+}
+
+a {
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+}
+
+/* Print misregistration: the name carries a permanent two-colour offset ghost. */
+.glitch {
+  position: relative;
+  display: inline-block;
+  isolation: isolate;
+}
+
+.glitch::before,
+.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  white-space: inherit;
+}
+
+.glitch::before {
+  color: var(--color-amber);
+  transform: translate(-2px, -2px);
+  opacity: 0.85;
+}
+
+.glitch::after {
+  color: var(--color-ghost);
+  transform: translate(2px, 2px);
+  opacity: 0.9;
+}
+
+@media (hover: hover) {
+  .glitch:hover::before,
+  .glitch:focus-visible::before {
+    animation: glitch-a 360ms steps(2, end) 2;
+  }
+
+  .glitch:hover::after,
+  .glitch:focus-visible::after {
+    animation: glitch-b 300ms steps(3, end) 2;
+  }
+}
+
+@keyframes glitch-a {
+  0% {
+    clip-path: inset(0 0 62% 0);
+    transform: translate(-3px, -2px);
+  }
+  50% {
+    clip-path: inset(48% 0 18% 0);
+    transform: translate(-6px, 1px);
+  }
+  100% {
+    clip-path: inset(0 0 62% 0);
+    transform: translate(-2px, -2px);
+  }
+}
+
+@keyframes glitch-b {
+  0% {
+    clip-path: inset(58% 0 0 0);
+    transform: translate(3px, 2px);
+  }
+  60% {
+    clip-path: inset(12% 0 44% 0);
+    transform: translate(6px, -1px);
+  }
+  100% {
+    clip-path: inset(58% 0 0 0);
+    transform: translate(2px, 2px);
+  }
+}
+
+/* One authored moment: the readout powers on once, then everything holds still. */
+@keyframes power-on {
+  from {
+    opacity: 0;
+    clip-path: inset(46% 0 46% 0);
+  }
+  to {
+    opacity: 1;
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+.boot {
+  animation: power-on 620ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.boot-2 {
+  animation: power-on 620ms cubic-bezier(0.16, 1, 0.3, 1) 120ms both;
+}
+
+/* Ritícula de pontilhado ordenado Bayer 8x8, como textura de impressão do mundo.
+   Não codifica dado nenhum: é material, não medição. */
+.reticula {
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='8' height='8' shape-rendering='crispEdges'><g fill='%232a2a26'><rect x='0' y='0' width='1' height='1'/><rect x='2' y='0' width='1' height='1'/><rect x='4' y='0' width='1' height='1'/><rect x='6' y='0' width='1' height='1'/><rect x='1' y='1' width='1' height='1'/><rect x='3' y='1' width='1' height='1'/><rect x='5' y='1' width='1' height='1'/><rect x='7' y='1' width='1' height='1'/><rect x='0' y='2' width='1' height='1'/><rect x='2' y='2' width='1' height='1'/><rect x='4' y='2' width='1' height='1'/><rect x='6' y='2' width='1' height='1'/><rect x='1' y='3' width='1' height='1'/><rect x='3' y='3' width='1' height='1'/><rect x='5' y='3' width='1' height='1'/><rect x='7' y='3' width='1' height='1'/><rect x='0' y='4' width='1' height='1'/><rect x='2' y='4' width='1' height='1'/><rect x='4' y='4' width='1' height='1'/><rect x='6' y='4' width='1' height='1'/><rect x='1' y='5' width='1' height='1'/><rect x='3' y='5' width='1' height='1'/><rect x='5' y='5' width='1' height='1'/><rect x='7' y='5' width='1' height='1'/><rect x='0' y='6' width='1' height='1'/><rect x='2' y='6' width='1' height='1'/><rect x='4' y='6' width='1' height='1'/><rect x='6' y='6' width='1' height='1'/><rect x='1' y='7' width='1' height='1'/><rect x='3' y='7' width='1' height='1'/><rect x='5' y='7' width='1' height='1'/><rect x='7' y='7' width='1' height='1'/></g></svg>");
+  background-size: 8px 8px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
 }

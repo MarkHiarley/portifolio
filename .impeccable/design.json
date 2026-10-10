@@ -1,0 +1,238 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-10T20:45:00-03:00",
+  "title": "Design System: Hiarley C. da Silva · portfólio",
+  "extensions": {
+    "colorMeta": {
+      "ground": {
+        "role": "neutral",
+        "displayName": "Ground",
+        "canonical": "#0b0b09",
+        "notes": "Campo da página e themeColor. Quente-escuro, nunca preto puro e nunca azul-petróleo."
+      },
+      "surface": {
+        "role": "neutral",
+        "displayName": "Surface",
+        "canonical": "#131311",
+        "notes": "Painéis, faixas de gravura e caixas de leitura."
+      },
+      "rule": {
+        "role": "neutral",
+        "displayName": "Rule",
+        "canonical": "#2a2a26",
+        "notes": "Toda separação de 1px: réguas, bordas de painel, divisores de lista."
+      },
+      "rule-strong": {
+        "role": "neutral",
+        "displayName": "Rule strong",
+        "canonical": "#55554c",
+        "notes": "Só scrollbar e marcadores de lista, onde a régua precisa sobreviver."
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Ink",
+        "canonical": "#edede5",
+        "notes": "Texto principal, títulos, valores e o hover do botão âmbar."
+      },
+      "dim": {
+        "role": "neutral",
+        "displayName": "Dim",
+        "canonical": "#9c9c92",
+        "notes": "Secundário, legendas e metadados. Medido em 7,11:1 sobre o ground."
+      },
+      "amber": {
+        "role": "primary",
+        "displayName": "Amber (fósforo)",
+        "canonical": "#ffb000",
+        "notes": "A única cor. Ação primária, pico de cada gravura, anel de foco e seleção de texto. Preto sobre âmbar mede 10,75:1."
+      },
+      "ghost": {
+        "role": "neutral",
+        "displayName": "Ghost",
+        "canonical": "#6d6d63",
+        "notes": "Só a camada cinza do glitch de registro do nome. Nunca para texto de leitura."
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "O nome na dobra, com o glitch de registro. Só aqui a face chega a 6rem."
+      },
+      "papel": {
+        "displayName": "Papel",
+        "purpose": "A linha de papel sob o nome, em caixa alta com tracking de 0.06em."
+      },
+      "secao": {
+        "displayName": "Título de seção",
+        "purpose": "EXPERIÊNCIA e PROJETOS, sobre a régua de abertura da seção."
+      },
+      "destaque": {
+        "displayName": "Destaque",
+        "purpose": "A pergunta de fechamento no contato."
+      },
+      "corpo": {
+        "displayName": "Corpo",
+        "purpose": "Provas, escopos, itens de projeto e competências, com medida entre 68 e 76ch."
+      },
+      "rotulo": {
+        "displayName": "Rótulo",
+        "purpose": "Metadados de seção, cabeçalhos de painel, legendas de figura e o texto dos botões."
+      }
+    },
+    "shadows": [],
+    "motion": [
+      {
+        "name": "power-on",
+        "value": "620ms cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "A única entrada autorada: a dobra liga uma vez, por clip-path e opacidade. O segundo bloco entra com 120ms de atraso."
+      },
+      {
+        "name": "glitch-hover",
+        "value": "360ms steps(2, end) e 300ms steps(3, end), duas repetições",
+        "purpose": "As duas camadas fantasmas do nome, só no hover."
+      },
+      {
+        "name": "decodificar-titulo",
+        "value": "620ms, uma vez, quando o título entra na tela",
+        "purpose": "Cada título de seção e a pergunta do contato chegam como caracteres de terminal e assentam no texto final; o texto real vive no aria-label."
+      },
+      {
+        "name": "lenis",
+        "value": "lerp 0.085, wheelMultiplier 1, touchMultiplier 1.4",
+        "purpose": "Scroll suave da página inteira; não monta quando o sistema pede menos movimento."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "sm",
+        "value": "640px"
+      },
+      {
+        "name": "md",
+        "value": "768px"
+      },
+      {
+        "name": "lg",
+        "value": "1024px"
+      },
+      {
+        "name": "container",
+        "value": "1180px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Botão de ação",
+      "kind": "button",
+      "refersTo": "botao-primario",
+      "description": "A única ação da página, repetida na dobra e no contato (WhatsApp). Altura de 44px, raio zero, âmbar no repouso e tinta no hover.",
+      "html": "<a class=\"ds-btn\" href=\"https://wa.me/...\">Vamos conversar <span aria-hidden=\"true\">-&gt;</span></a>",
+      "css": ".ds-btn { display: inline-flex; align-items: center; gap: 0.5rem; background: #ffb000; color: #0b0b09; padding: 0.75rem 1.25rem; font-family: 'Departure Mono', ui-monospace, monospace; font-size: 0.875rem; letter-spacing: 0.04em; text-transform: uppercase; text-decoration: none; border: 0; border-radius: 0; } .ds-btn:hover { background: #edede5; } .ds-btn:focus-visible { outline: 2px solid #ffb000; outline-offset: 3px; }"
+    },
+    {
+      "name": "Link discreto",
+      "kind": "nav",
+      "refersTo": "link-quieto",
+      "description": "Ações alternativas (e-mail, LinkedIn) e itens de navegação: texto em dim que sobe para ink no hover, sem sublinhado por padrão.",
+      "html": "<a class=\"ds-link\" href=\"mailto:...\">hiarleycostamarley@gmail.com</a>",
+      "css": ".ds-link { color: #9c9c92; text-decoration: none; text-underline-offset: 4px; } .ds-link:hover { color: #edede5; } .ds-link:focus-visible { outline: 2px solid #ffb000; outline-offset: 3px; }"
+    },
+    {
+      "name": "Painel",
+      "kind": "card",
+      "refersTo": "painel",
+      "description": "Caixa de 1px sobre surface que carrega a gravura da dobra e o bloco de contato. Cabeçalho com título e metadado separado por régua. Sem raio, sem sombra.",
+      "html": "<section class=\"ds-painel\"><header><h3>Servidor de filas em Go</h3><p>CodXiss · RabbitMQ</p></header><div class=\"ds-painel-corpo\"> </div></section>",
+      "css": ".ds-painel { background: #131311; border: 1px solid #2a2a26; border-radius: 0; } .ds-painel > header { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0 1.5rem; border-bottom: 1px solid #2a2a26; padding: 0.75rem 1.5rem; } .ds-painel > header h3 { font-size: 0.95rem; letter-spacing: 0.05em; text-transform: uppercase; color: #edede5; font-weight: 400; } .ds-painel > header p { font-size: 0.75rem; color: #9c9c92; }"
+    },
+    {
+      "name": "Abertura de seção",
+      "kind": "custom",
+      "description": "Régua de 1px no topo, título em caixa alta à esquerda e o metadado da seção à direita, alinhados pela base. Nenhum kicker acima do título.",
+      "html": "<div class=\"ds-secao\"><h2>Projetos</h2><p>cliente, produto e pesquisa</p></div>",
+      "css": ".ds-secao { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 0.5rem 1.5rem; border-top: 1px solid #2a2a26; padding-top: 1.25rem; } .ds-secao h2 { font-size: clamp(1.75rem, 4.6vw, 2.75rem); line-height: 1; text-transform: uppercase; font-weight: 400; color: #edede5; } .ds-secao p { font-size: 0.75rem; color: #9c9c92; }"
+    },
+    {
+      "name": "Painel de readout",
+      "kind": "custom",
+      "description": "Figura assinatura da dobra: um dl de duas colunas (etapa em dim, o que ela faz em ink), régua de 1px entre as linhas, moldura de 1px e surface coberto pela retícula de pontilhado ordenado. A retícula é textura, não medição; os passos vêm do pipeline real.",
+      "html": "<dl class=\"ds-readout\"><div><dt>serviços efêmeros</dt><dd>postgres, redis, qdrant, s3 e smtp subindo do zero a cada corrida</dd></div></dl>",
+      "css": ".ds-readout { display: block; background: #131311; background-image: url(\"data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='8' height='8'><g fill='%232a2a26'><rect x='0' y='0' width='1' height='1'/></g></svg>\"); background-size: 8px 8px; border: 1px solid #2a2a26; border-radius: 0; } .ds-readout > div { display: grid; gap: 0 2rem; padding: 0.75rem 1.5rem; border-top: 1px solid #2a2a26; font-size: 0.875rem; } .ds-readout > div:first-child { border-top: 0; } .ds-readout dt { color: #9c9c92; } .ds-readout dd { color: #edede5; }"
+    },
+    {
+      "name": "Masthead",
+      "kind": "nav",
+      "description": "Barra fixa com o ground, régua inferior de 1px e três destinos. Não repete o nome da página: o display é dono da dobra.",
+      "html": "<header class=\"ds-masthead\"><a href=\"#topo\">início</a><nav aria-label=\"seções\"><a href=\"#experiencia\">experiência</a><a href=\"#projetos\">projetos</a><a href=\"#contato\">contato</a></nav></header>",
+      "css": ".ds-masthead { position: sticky; top: 0; z-index: 10; display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 0.25rem 1.5rem; background: #0b0b09; border-bottom: 1px solid #2a2a26; padding: 0.75rem 2rem; font-size: 0.75rem; } .ds-masthead nav { display: flex; gap: 1.25rem; }"
+    },
+    {
+      "name": "Título que decodifica",
+      "kind": "custom",
+      "description": "Título de seção que chega como caracteres de terminal e assenta no texto final, uma única vez, quando entra na tela. O texto real fica no aria-label e o span visível é aria-hidden.",
+      "html": "<h2 aria-label=\"Projetos\" class=\"ds-titulo\"><span aria-hidden=\"true\">Projetos</span></h2>",
+      "css": ".ds-titulo { font-size: clamp(1.75rem, 4.6vw, 2.75rem); line-height: 1; text-transform: uppercase; font-weight: 400; color: #edede5; } @media (prefers-reduced-motion: reduce) { .ds-titulo span { animation: none; } }"
+    },
+    {
+      "name": "Moldura de captura",
+      "kind": "custom",
+      "description": "A captura do site entregue à Tavares Odontologia dentro da mesma moldura de 1px, abaixo da paleta do projeto, com a proveniência na legenda.",
+      "html": "<figure class=\"ds-captura\"><ul class=\"ds-paleta\"><li><div style=\"background:#122B27\"></div><p>ink <span>#122B27</span></p></li></ul><img src=\"/amostras/tavares-odontologia.png\" alt=\"Captura da página inicial da Tavares Odontologia…\" width=\"2561\" height=\"1380\"><figcaption>paleta e captura da página entregue · captura do autor em 09/10/2026, do deploy em lp-tavares.vercel.app · no ar em tavaresodontologiactga.com.br</figcaption></figure>",
+      "css": ".ds-captura img { display: block; width: 100%; border: 1px solid #2a2a26; border-radius: 0; } .ds-captura figcaption { margin-top: 0.75rem; border-top: 1px solid #2a2a26; padding-top: 0.75rem; font-size: 0.75rem; color: #9c9c92; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "O readout honesto",
+    "overview": "A página se apresenta como um painel de leitura: nome, papel, prova em uma linha, as etapas da esteira de release em painel de borda fina e, abaixo, experiência, projetos e contato. O registro é de resultado — escala, isolamento de dados, release sem queda — e o que sustenta cada afirmação é o próprio sistema descrito em tela. O mundo é o do terminal monoespaçado e do impresso pontilhado: fundo quase-preto, tinta quase-branca, réguas de 1px, cantos vivos e um único âmbar de fósforo reservado à ação. A retícula de pontilhado ordenado é um tile SVG desenhado para o projeto, o glitch do nome é CSS, e nenhuma figura simula medição: quando um dado real não existe, a figura não existe.",
+    "keyCharacteristics": [
+      "Mono pixelada em toda a página, com a hierarquia vindo de escala, caixa e tinta — a face tem um peso só.",
+      "Um âmbar de fósforo, só como ação.",
+      "Réguas de 1px em vez de sombras: profundidade é valor, não elevação.",
+      "Raio zero e uma espessura de borda em todo lugar.",
+      "Retícula de pontilhado ordenado como textura de impressão, nunca como codificação de dado.",
+      "Sem série de dado ilustrativa: figura que pareça medição só entra com medição de verdade e origem declarada."
+    ],
+    "rules": [
+      {
+        "name": "A Regra de Um Só Âmbar",
+        "body": "O âmbar só aparece como ação ou marca de medição: os dois botões (a mesma ação), a linha de pico de cada gravura, o anel de foco e a seleção de texto.",
+        "section": "colors"
+      },
+      {
+        "name": "Régua, não sombra",
+        "body": "Não existe token de sombra. Se dois blocos precisam se separar, entra uma linha de 1px.",
+        "section": "elevation"
+      },
+      {
+        "name": "Zero raio, uma espessura",
+        "body": "Raio 0 em botões, painéis, molduras e gravuras; borda sempre de 1px.",
+        "section": "shapes"
+      },
+      {
+        "name": "Sem dado ilustrativo",
+        "body": "Figura que pareça medição só entra com medição real e origem declarada; captura de cliente carrega origem e data. Quando o dado não existe, a figura não é desenhada.",
+        "section": "typography"
+      },
+      {
+        "name": "Movimento autoral, uma vez por elemento",
+        "body": "Três dispositivos, todos do vocabulário do mundo e disparados uma única vez: a dobra liga (power-on de 620ms), cada título decodifica ao entrar (620ms) e o nome tem glitch de registro no hover. Nada de entrada repetida por seção, e com prefers-reduced-motion nada disso monta.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Escrever em linguagem de resultado e ancorar cada afirmação em fato verificável ou sistema descrito.",
+      "Declarar a origem de todo número e de toda captura.",
+      "Separar com régua de 1px, conferir contraste antes de publicar e manter 44px de alvo nos botões.",
+      "Usar a retícula apenas como textura de impressão."
+    ],
+    "donts": [
+      "Não usar o âmbar como decoração, fundo ou ícone.",
+      "Não introduzir raio, sombra, gradiente, blur, emoji ou glifo no lugar de ícone.",
+      "Não voltar a incluir lista de cursos, certificados, competências ou de tecnologias.",
+      "Não afirmar número sem origem registrada em PRODUCT.md.",
+      "Não colocar série de dado ilustrativa nem gráfico que pareça medir algo que ninguém mediu.",
+      "Não acrescentar imagem de cliente além da captura licenciada."
+    ]
+  }
+}

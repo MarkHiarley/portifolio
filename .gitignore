@@ -36,6 +36,9 @@ yarn-error.log*
 # vercel
 .vercel
 
+# capturas de revisão do impeccable (evidência local, não versionada)
+.impeccable/review/
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts

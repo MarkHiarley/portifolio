@@ -1,36 +1,37 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Portfólio — Hiarley C. da Silva
 
-## Getting Started
+Página única em Next.js 16 (App Router), TypeScript e Tailwind CSS v4. Tema escuro
+brutalista/terminal, com dithering, halftone de linhas e glitch **desenhados em código**
+(canvas 2D e CSS), sem imagem pré-filtrada. Scroll suave com Lenis, desligado sob
+`prefers-reduced-motion`.
 
-First, run the development server:
+## Rodar
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev        # http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Outros scripts: `npm run build`, `npm start`, `npm run lint`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Estrutura
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- `src/app/page.tsx` — composição das seções: hero, `#experiencia`, `#projetos`, `#contato`
+- `src/app/globals.css` — tokens do tema, superfícies nativas do navegador (seleção, barra de rolagem, foco), a retícula `.reticula` (pontilhado ordenado como textura), o glitch de impressão e o vocabulário de movimento do mundo
+- `src/components/titulo-animado.tsx` — título de seção que decodifica uma vez ao entrar na tela
+- `src/components/scroll-suave.tsx` — Lenis
+- `src/data/profile.ts` — conteúdo factual (fonte: CV do autor) e as legendas das figuras. Sem série de dado ilustrativa: a dobra é um readout das etapas reais da esteira de release
+- `src/app/fonts/` — Departure Mono, com a licença SIL OFL 1.1 ao lado
+- `PRODUCT.md` — verdade de produto; `DESIGN.md` — sistema de design implementado
+- `.impeccable/` — brief da superfície, config de build e capturas da revisão final
 
-## Learn More
+## Conteúdo
 
-To learn more about Next.js, take a look at the following resources:
+Entra apenas o que está no CV do autor ou foi confirmado por ele. Toda amostra sintética
+ou reconstruída é rotulada como tal na própria página, e nenhum dado de cliente aparece.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Licença
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Código sob MIT (`LICENSE`). Fora do MIT: a fonte Departure Mono (SIL OFL 1.1, licença em
+`src/app/fonts/DepartureMono-LICENSE.txt`) e a captura da clínica Tavares Odontologia em
+`public/amostras/`, cuja marca, fotos e conteúdo pertencem à clínica.
