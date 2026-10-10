@@ -244,83 +244,78 @@ export default function Home() {
                   </div>
 
                   {projeto.captura && (
-                    <div className="mt-8 grid gap-x-12 gap-y-6 md:grid-cols-12">
-                      <figure className="md:col-span-5">
-                        <div className="aspect-[4/3] overflow-hidden border border-rule bg-surface">
-                          <Image
-                            src={projeto.captura.src}
-                            alt={projeto.captura.alt}
-                            width={projeto.captura.largura}
-                            height={projeto.captura.altura}
-                            sizes="(min-width: 1024px) 460px, 100vw"
-                            className="h-full w-full object-cover object-top"
-                          />
+                    <figure className="mt-10">
+                      <div className="border border-rule bg-surface">
+                        <Image
+                          src={projeto.captura.src}
+                          alt={projeto.captura.alt}
+                          width={projeto.captura.largura}
+                          height={projeto.captura.altura}
+                          sizes="(min-width: 1024px) 1116px, 100vw"
+                          className="block h-auto w-full"
+                        />
+                      </div>
+                      {projeto.legendaCaptura && (
+                        <figcaption className="mt-2 text-xs text-dim">
+                          {projeto.legendaCaptura}
+                        </figcaption>
+                      )}
+                    </figure>
+                  )}
+
+                  {(projeto.ficha || projeto.paleta || projeto.links.length > 0) && (
+                    <dl className="mt-6 grid gap-x-12 gap-y-6 border-t border-rule pt-4 sm:grid-cols-2 lg:grid-cols-4">
+                      {projeto.ficha?.map(([rotulo, valor]) => (
+                        <div key={rotulo}>
+                          <dt className="text-[0.7rem] text-dim uppercase">{rotulo}</dt>
+                          <dd className="mt-1.5 text-[0.875rem] text-ink">{valor}</dd>
                         </div>
-                        {projeto.legendaCaptura && (
-                          <figcaption className="mt-2 text-xs text-dim">
-                            {projeto.legendaCaptura}
-                          </figcaption>
-                        )}
-                      </figure>
+                      ))}
 
-                      <dl className="border-t border-rule md:col-span-7">
-                        {projeto.ficha?.map(([rotulo, valor]) => (
-                          <div
-                            key={rotulo}
-                            className="grid grid-cols-3 gap-x-4 border-b border-rule py-2.5 text-[0.875rem]"
-                          >
-                            <dt className="text-xs text-dim">{rotulo}</dt>
-                            <dd className="col-span-2 text-ink">{valor}</dd>
-                          </div>
-                        ))}
-
-                        {projeto.paleta && (
-                          <div className="grid grid-cols-3 gap-x-4 border-b border-rule py-3">
-                            <dt className="text-xs text-dim">paleta</dt>
-                            <dd className="col-span-2">
-                              <span className="flex h-10 border border-rule">
-                                {projeto.paleta.map((cor) => (
-                                  <span
-                                    key={cor.hex}
-                                    aria-hidden="true"
-                                    className="flex-1 border-r border-rule last:border-r-0"
-                                    style={{ backgroundColor: cor.hex }}
-                                  />
-                                ))}
-                              </span>
-                              <span className="mt-1.5 grid grid-cols-4 gap-x-2">
-                                {projeto.paleta.map((cor) => (
-                                  <span key={cor.hex} className="text-[0.7rem] leading-snug">
-                                    <span className="block text-dim">{cor.nome}</span>
-                                    <span className="block text-ink tabular-nums">
-                                      {cor.hex}
-                                    </span>
-                                  </span>
-                                ))}
-                              </span>
-                            </dd>
-                          </div>
-                        )}
-
-                        {projeto.links.length > 0 && (
-                          <div className="grid grid-cols-3 gap-x-4 py-2.5">
-                            <dt className="text-xs text-dim">links</dt>
-                            <dd className="col-span-2 flex flex-wrap gap-x-4 gap-y-1 text-[0.875rem]">
-                              {projeto.links.map((link) => (
-                                <a
-                                  key={link.href}
-                                  className="text-ink underline underline-offset-4 hover:text-amber"
-                                  href={link.href}
-                                  rel="noreferrer"
-                                >
-                                  {link.rotulo}
-                                </a>
+                      {projeto.paleta && (
+                        <div>
+                          <dt className="text-[0.7rem] text-dim uppercase">paleta</dt>
+                          <dd className="mt-1.5">
+                            <span className="flex h-8 border border-rule">
+                              {projeto.paleta.map((cor) => (
+                                <span
+                                  key={cor.hex}
+                                  aria-hidden="true"
+                                  className="flex-1 border-r border-rule last:border-r-0"
+                                  style={{ backgroundColor: cor.hex }}
+                                />
                               ))}
-                            </dd>
-                          </div>
-                        )}
-                      </dl>
-                    </div>
+                            </span>
+                            <span className="mt-1.5 grid grid-cols-2 gap-x-3 gap-y-1">
+                              {projeto.paleta.map((cor) => (
+                                <span key={cor.hex} className="text-[0.7rem] leading-snug">
+                                  <span className="text-dim">{cor.nome} </span>
+                                  <span className="text-ink tabular-nums">{cor.hex}</span>
+                                </span>
+                              ))}
+                            </span>
+                          </dd>
+                        </div>
+                      )}
+
+                      {projeto.links.length > 0 && (
+                        <div>
+                          <dt className="text-[0.7rem] text-dim uppercase">links</dt>
+                          <dd className="mt-1.5 flex flex-wrap gap-x-4 gap-y-1 text-[0.875rem]">
+                            {projeto.links.map((link) => (
+                              <a
+                                key={link.href}
+                                className="text-ink underline underline-offset-4 hover:text-amber"
+                                href={link.href}
+                                rel="noreferrer"
+                              >
+                                {link.rotulo}
+                              </a>
+                            ))}
+                          </dd>
+                        </div>
+                      )}
+                    </dl>
                   )}
 
                 </article>
