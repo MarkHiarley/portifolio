@@ -5,6 +5,7 @@ import { areasDeConhecimento, contato, identity, instituicoesDeEnsino } from "@/
 import "./globals.css";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.hiarley.com.br"),
   title: {
     default: "Hiarley C. da Silva · Software Engineer",
     template: "%s",

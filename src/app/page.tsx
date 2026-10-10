@@ -14,9 +14,12 @@ import {
 export const metadata: Metadata = {
   title: "Hiarley C. da Silva · Software Engineer",
   description: identity.prova,
+  alternates: { canonical: "/" },
   openGraph: {
     title: "Hiarley C. da Silva · Software Engineer",
     description: identity.prova,
+    url: "/",
+    siteName: identity.nome,
     locale: "pt_BR",
     type: "profile",
   },
