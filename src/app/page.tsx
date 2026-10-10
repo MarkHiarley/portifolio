@@ -171,7 +171,7 @@ export default function Home() {
                             {cargo.periodo}
                           </span>
                         </div>
-                        <p className="mt-2 max-w-[70ch] text-[0.925rem] text-dim">
+                        <p className="mt-2 max-w-[70ch] text-[0.95rem] text-dim">
                           {cargo.escopo}
                         </p>
                         {cargo.desfechos.length > 0 && (
@@ -231,7 +231,7 @@ export default function Home() {
                       )}
                     </div>
 
-                    <ul className="max-w-[68ch] space-y-2.5 text-[0.925rem] leading-relaxed text-dim md:col-span-7">
+                    <ul className="max-w-[68ch] space-y-2.5 text-[0.95rem] leading-relaxed text-dim md:col-span-7">
                       {projeto.itens.map((item) => (
                         <li key={item} className="flex gap-2">
                           <span aria-hidden="true" className="text-rule-strong">
@@ -244,15 +244,15 @@ export default function Home() {
                   </div>
 
                   {projeto.captura && (
-                    <div className="mt-8 grid gap-x-8 gap-y-6 md:grid-cols-12">
-                      <figure className="md:col-span-7">
-                        <div className="aspect-[16/10] overflow-hidden border border-rule bg-surface">
+                    <div className="mt-8 grid gap-x-12 gap-y-6 md:grid-cols-12">
+                      <figure className="md:col-span-5">
+                        <div className="aspect-[4/3] overflow-hidden border border-rule bg-surface">
                           <Image
                             src={projeto.captura.src}
                             alt={projeto.captura.alt}
                             width={projeto.captura.largura}
                             height={projeto.captura.altura}
-                            sizes="(min-width: 1024px) 640px, 100vw"
+                            sizes="(min-width: 1024px) 460px, 100vw"
                             className="h-full w-full object-cover object-top"
                           />
                         </div>
@@ -263,7 +263,7 @@ export default function Home() {
                         )}
                       </figure>
 
-                      <dl className="border-t border-rule md:col-span-5">
+                      <dl className="border-t border-rule md:col-span-7">
                         {projeto.ficha?.map(([rotulo, valor]) => (
                           <div
                             key={rotulo}
@@ -309,7 +309,7 @@ export default function Home() {
                               {projeto.links.map((link) => (
                                 <a
                                   key={link.href}
-                                  className="text-ink hover:text-amber"
+                                  className="text-ink underline underline-offset-4 hover:text-amber"
                                   href={link.href}
                                   rel="noreferrer"
                                 >

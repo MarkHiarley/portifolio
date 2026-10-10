@@ -37,7 +37,7 @@ typography:
     letterSpacing: "normal"
   corpo:
     fontFamily: "Departure Mono, ui-monospace, SFMono-Regular, Menlo, monospace"
-    fontSize: "0.925rem"
+    fontSize: "0.95rem"
     fontWeight: 400
     lineHeight: 1.6
     letterSpacing: "normal"
@@ -118,7 +118,7 @@ A hierarquia vem de escala, caixa e tinta — a face tem um peso só, então pes
 - **Destaque** (`clamp(1.75rem, 5.2vw, 3.25rem)`): a pergunta de fechamento no contato.
 - **Seção** (`clamp(1.75rem, 4.6vw, 2.75rem)`, `line-height 1`): os títulos `EXPERIÊNCIA`, `PROJETOS`.
 - **Papel** (`clamp(0.9rem, 2.1vw, 1.15rem)`, `tracking 0.06em`, caixa alta): a linha de papel sob o nome.
-- **Corpo** (`0.925rem`, `line-height 1.6`, medida máxima 68–76ch): prova da dobra, escopos e desfechos da experiência, resumos e itens de projeto.
+- **Corpo** (`0.95rem`, `line-height 1.6`, medida máxima 68–76ch): prova da dobra, escopos e desfechos da experiência, resumos e itens de projeto.
 - **Rótulo** (`0.75rem`, `tracking 0.08em` a `0.16em`, caixa alta ou não): metadados de seção, cabeçalhos de painel, legendas de figura.
 - **Micro** (`0.7rem`, `line-height 1.35`): só rótulos de valor em grade, como o nome e o hex de cada cor na ficha de um projeto. Nunca texto de leitura.
 

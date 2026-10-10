@@ -179,7 +179,7 @@ export const projetos: Projeto[] = [
     ],
     ficha: [
       ["entrega", "landing page estática, publicada"],
-      ["stack", "HTML · CSS · JavaScript · Vercel"],
+      ["stack", "HTML · CSS · JavaScript · Vercel · DNS no Cloudflare"],
     ],
     legendaCaptura: "captura do autor em 09/10/2026, do deploy em lp-tavares.vercel.app",
     captura: {
