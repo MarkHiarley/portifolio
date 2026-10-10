@@ -152,7 +152,8 @@ export type Projeto = {
   resumo: string;
   itens: string[];
   links: { rotulo: string; href: string }[];
-  visual: "paleta" | "none";
+  ficha?: [string, string][];
+  legendaCaptura?: string;
   paleta?: { nome: string; hex: string }[];
   captura?: { src: string; largura: number; altura: number; alt: string };
 };
@@ -176,7 +177,11 @@ export const projetos: Projeto[] = [
       },
       { rotulo: "github.com/MarkHiarley/lp-tavares", href: "https://github.com/MarkHiarley/lp-tavares" },
     ],
-    visual: "paleta",
+    ficha: [
+      ["entrega", "landing page estática, publicada"],
+      ["stack", "HTML · CSS · JavaScript · Vercel"],
+    ],
+    legendaCaptura: "captura do autor em 09/10/2026, do deploy em lp-tavares.vercel.app",
     captura: {
       src: "/amostras/tavares-odontologia.png",
       largura: 2561,
@@ -202,7 +207,6 @@ export const projetos: Projeto[] = [
       "Apresentações do projeto na Lumen, na Fatec e na Unifesp.",
     ],
     links: [{ rotulo: "eco-radar.enemestudei.com", href: "https://eco-radar.enemestudei.com/" }],
-    visual: "none",
   },
   {
     nome: "eNem Estudei",
@@ -219,7 +223,6 @@ export const projetos: Projeto[] = [
       { rotulo: "enemestudei.com", href: "https://enemestudei.com" },
       { rotulo: "enemestudei.com/b2b", href: "https://enemestudei.com/b2b" },
     ],
-    visual: "none",
   },
   {
     nome: "Ceará Científico 2025",
@@ -230,6 +233,5 @@ export const projetos: Projeto[] = [
       "Projeto classificado para a etapa estadual do Ceará Científico 2025.",
     ],
     links: [],
-    visual: "none",
   },
 ];

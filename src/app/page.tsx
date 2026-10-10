@@ -214,7 +214,7 @@ export default function Home() {
                       <p className="max-w-[52ch] text-[0.95rem] leading-relaxed text-ink">
                         {projeto.resumo}
                       </p>
-                      {projeto.links.length > 0 && (
+                      {!projeto.captura && projeto.links.length > 0 && (
                         <ul className="mt-4 flex flex-wrap gap-x-6 gap-y-2 text-sm">
                           {projeto.links.map((link) => (
                             <li key={link.href}>
@@ -243,39 +243,84 @@ export default function Home() {
                     </ul>
                   </div>
 
-                  {projeto.visual === "paleta" && projeto.paleta && (
-                    <figure className="mt-8">
-                      <ul className="grid grid-cols-2 gap-x-6 gap-y-5 sm:grid-cols-4">
-                        {projeto.paleta.map((cor) => (
-                          <li key={cor.hex}>
-                            <div
-                              className="h-16 border border-rule"
-                              style={{ backgroundColor: cor.hex }}
-                            />
-                            <p className="mt-2 flex flex-wrap items-baseline justify-between gap-x-3 text-xs text-dim">
-                              <span>{cor.nome}</span>
-                              <span className="tabular-nums">{cor.hex}</span>
-                            </p>
-                          </li>
-                        ))}
-                      </ul>
-                      {projeto.captura && (
-                        <div className="mt-6">
+                  {projeto.captura && (
+                    <div className="mt-8 grid gap-x-8 gap-y-6 md:grid-cols-12">
+                      <figure className="md:col-span-7">
+                        <div className="aspect-[16/10] overflow-hidden border border-rule bg-surface">
                           <Image
                             src={projeto.captura.src}
                             alt={projeto.captura.alt}
                             width={projeto.captura.largura}
                             height={projeto.captura.altura}
-                            sizes="(min-width: 1024px) 1116px, 100vw"
-                            className="block w-full border border-rule"
+                            sizes="(min-width: 1024px) 640px, 100vw"
+                            className="h-full w-full object-cover object-top"
                           />
                         </div>
-                      )}
-                      <figcaption className="mt-3 border-t border-rule pt-3 text-xs text-dim">
-                        paleta e captura da página entregue · captura do autor em 09/10/2026, do
-                        deploy em lp-tavares.vercel.app · no ar em tavaresodontologiactga.com.br
-                      </figcaption>
-                    </figure>
+                        {projeto.legendaCaptura && (
+                          <figcaption className="mt-2 text-xs text-dim">
+                            {projeto.legendaCaptura}
+                          </figcaption>
+                        )}
+                      </figure>
+
+                      <dl className="border-t border-rule md:col-span-5">
+                        {projeto.ficha?.map(([rotulo, valor]) => (
+                          <div
+                            key={rotulo}
+                            className="grid grid-cols-3 gap-x-4 border-b border-rule py-2.5 text-[0.875rem]"
+                          >
+                            <dt className="text-xs text-dim">{rotulo}</dt>
+                            <dd className="col-span-2 text-ink">{valor}</dd>
+                          </div>
+                        ))}
+
+                        {projeto.paleta && (
+                          <div className="grid grid-cols-3 gap-x-4 border-b border-rule py-3">
+                            <dt className="text-xs text-dim">paleta</dt>
+                            <dd className="col-span-2">
+                              <span className="flex h-10 border border-rule">
+                                {projeto.paleta.map((cor) => (
+                                  <span
+                                    key={cor.hex}
+                                    aria-hidden="true"
+                                    className="flex-1 border-r border-rule last:border-r-0"
+                                    style={{ backgroundColor: cor.hex }}
+                                  />
+                                ))}
+                              </span>
+                              <span className="mt-1.5 grid grid-cols-4 gap-x-2">
+                                {projeto.paleta.map((cor) => (
+                                  <span key={cor.hex} className="text-[0.7rem] leading-snug">
+                                    <span className="block text-dim">{cor.nome}</span>
+                                    <span className="block text-ink tabular-nums">
+                                      {cor.hex}
+                                    </span>
+                                  </span>
+                                ))}
+                              </span>
+                            </dd>
+                          </div>
+                        )}
+
+                        {projeto.links.length > 0 && (
+                          <div className="grid grid-cols-3 gap-x-4 py-2.5">
+                            <dt className="text-xs text-dim">links</dt>
+                            <dd className="col-span-2 flex flex-wrap gap-x-4 gap-y-1 text-[0.875rem]">
+                              {projeto.links.map((link) => (
+                                <a
+                                  key={link.href}
+                                  className="text-ink hover:text-amber"
+                                  href={link.href}
+                                  rel="noreferrer"
+                                >
+                                  {link.rotulo}
+                                </a>
+                              ))}
+                            </dd>
+                          </div>
+                        )}
+                      </dl>
+                    </div>
                   )}
 
                 </article>

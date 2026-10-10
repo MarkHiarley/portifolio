@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-10-10T20:45:00-03:00",
+  "generatedAt": "2026-10-10T21:40:00-03:00",
   "title": "Design System: Hiarley C. da Silva · portfólio",
   "extensions": {
     "colorMeta": {
@@ -77,6 +77,10 @@
       "rotulo": {
         "displayName": "Rótulo",
         "purpose": "Metadados de seção, cabeçalhos de painel, legendas de figura e o texto dos botões."
+      },
+      "micro": {
+        "displayName": "Micro",
+        "purpose": "Só rótulos de valor em grade, como o nome e o hex de cada cor na ficha de um projeto. Nunca texto de leitura."
       }
     },
     "shadows": [],
