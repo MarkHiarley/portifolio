@@ -5,6 +5,7 @@ import { TituloAnimado } from "@/components/titulo-animado";
 import {
   contato,
   emailLink,
+  entregaDaPlataforma,
   experiencia,
   identity,
   projetos,
@@ -40,6 +41,45 @@ function TituloDaSecao({ titulo, meta }: { titulo: string; meta: string }) {
       />
       <p className="text-xs text-dim">{meta}</p>
     </div>
+  );
+}
+
+function Readout({
+  titulo,
+  contexto,
+  legenda,
+  linhas,
+  reticulado,
+}: {
+  titulo: string;
+  contexto: string;
+  legenda: string;
+  linhas: readonly (readonly [string, string])[];
+  reticulado?: boolean;
+}) {
+  return (
+    <figure className="w-full">
+      <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1 text-xs">
+        <span className="tracking-[0.08em] text-ink uppercase">{titulo}</span>
+        <span className="text-dim">{contexto}</span>
+      </div>
+      <dl
+        className={`mt-4 divide-y divide-rule border border-rule bg-surface${reticulado ? " reticula" : ""}`}
+      >
+        {linhas.map(([etapa, resultado]) => (
+          <div
+            key={etapa}
+            className="grid gap-x-8 gap-y-1 px-5 py-3 text-[0.875rem] sm:grid-cols-12 sm:px-6"
+          >
+            <dt className="text-dim sm:col-span-4">{etapa}</dt>
+            <dd className="text-ink sm:col-span-8">{resultado}</dd>
+          </div>
+        ))}
+      </dl>
+      <figcaption className="mt-3 border-t border-rule pt-3 text-xs text-dim">
+        <span className="block max-w-[76ch]">{legenda}</span>
+      </figcaption>
+    </figure>
   );
 }
 
@@ -108,28 +148,15 @@ export default function Home() {
               </a>
             </div>
 
-            <figure className="mt-10">
-              <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1 text-xs">
-                <span className="tracking-[0.08em] text-ink uppercase">
-                  {releaseDaPlataforma.titulo}
-                </span>
-                <span className="text-dim">{releaseDaPlataforma.contexto}</span>
-              </div>
-              <dl className="reticula mt-4 divide-y divide-rule border border-rule bg-surface">
-                {releaseDaPlataforma.linhas.map(([etapa, resultado]) => (
-                  <div
-                    key={etapa}
-                    className="grid gap-x-8 gap-y-1 px-5 py-3 text-[0.875rem] sm:grid-cols-12 sm:px-6"
-                  >
-                    <dt className="text-dim sm:col-span-4">{etapa}</dt>
-                    <dd className="text-ink sm:col-span-8">{resultado}</dd>
-                  </div>
-                ))}
-              </dl>
-              <figcaption className="mt-3 border-t border-rule pt-3 text-xs text-dim">
-                <span className="block max-w-[76ch]">{releaseDaPlataforma.legenda}</span>
-              </figcaption>
-            </figure>
+            <div className="mt-12">
+              <Readout
+                titulo={entregaDaPlataforma.titulo}
+                contexto={entregaDaPlataforma.contexto}
+                legenda={entregaDaPlataforma.legenda}
+                linhas={entregaDaPlataforma.linhas}
+                reticulado
+              />
+            </div>
 
             <p className="mt-4 text-xs text-dim">
               <span className="text-amber" aria-hidden="true">
@@ -189,6 +216,17 @@ export default function Home() {
                       </div>
                     ))}
                   </div>
+
+                  {empresa.mostraEsteira && (
+                    <div className="md:col-span-12">
+                      <Readout
+                        titulo={releaseDaPlataforma.titulo}
+                        contexto={releaseDaPlataforma.contexto}
+                        legenda={releaseDaPlataforma.legenda}
+                        linhas={releaseDaPlataforma.linhas}
+                      />
+                    </div>
+                  )}
                 </div>
               ))}
             </div>
@@ -209,39 +247,53 @@ export default function Home() {
                     <p className="text-xs text-dim tabular-nums">{projeto.periodo}</p>
                   </div>
 
-                  <div className="mt-6 grid gap-x-12 gap-y-6 md:grid-cols-12">
-                    <div className="md:col-span-5">
-                      <p className="max-w-[52ch] text-[0.95rem] leading-relaxed text-ink">
-                        {projeto.resumo}
-                      </p>
-                      {!projeto.captura && projeto.links.length > 0 && (
-                        <ul className="mt-4 flex flex-wrap gap-x-6 gap-y-2 text-sm">
-                          {projeto.links.map((link) => (
-                            <li key={link.href}>
-                              <a
-                                className="text-dim hover:text-ink"
-                                href={link.href}
-                                rel="noreferrer"
-                              >
-                                {link.rotulo}
-                              </a>
-                            </li>
-                          ))}
-                        </ul>
-                      )}
-                    </div>
+                  <p className="mt-6 max-w-[72ch] text-[0.95rem] leading-relaxed text-ink">
+                    {projeto.resumo}
+                  </p>
 
-                    <ul className="max-w-[68ch] space-y-2.5 text-[0.95rem] leading-relaxed text-dim md:col-span-7">
-                      {projeto.itens.map((item) => (
-                        <li key={item} className="flex gap-2">
-                          <span aria-hidden="true" className="text-rule-strong">
-                            &gt;
-                          </span>
-                          <span>{item}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
+                  <dl className="mt-6 grid gap-x-12 gap-y-5 border-t border-rule pt-4 sm:grid-cols-2 lg:grid-cols-4">
+                    {projeto.ficha?.map(([rotulo, valor]) => (
+                      <div key={rotulo}>
+                        <dt className="text-[0.7rem] text-dim uppercase">{rotulo}</dt>
+                        <dd className="mt-1.5 text-[0.875rem] text-ink">{valor}</dd>
+                      </div>
+                    ))}
+
+                    {projeto.links.length > 0 && (
+                      <div>
+                        <dt className="text-[0.7rem] text-dim uppercase">links</dt>
+                        <dd className="mt-1.5 flex flex-col items-start gap-1 text-[0.875rem]">
+                          {projeto.links.map((link) => (
+                            <a
+                              key={link.href}
+                              className="inline-flex items-baseline gap-1.5 text-ink underline underline-offset-4 hover:text-amber"
+                              href={link.href}
+                              rel="noreferrer"
+                            >
+                              {link.rotulo}
+                              <span aria-hidden="true" className="text-dim">
+                                -&gt;
+                              </span>
+                            </a>
+                          ))}
+                        </dd>
+                      </div>
+                    )}
+                  </dl>
+
+                  <ul className="mt-8 grid gap-x-12 gap-y-5 border-t border-rule pt-5 sm:grid-cols-2">
+                    {projeto.itens.map((item) => (
+                      <li
+                        key={item}
+                        className="flex gap-2 text-[0.95rem] leading-relaxed text-dim"
+                      >
+                        <span aria-hidden="true" className="text-rule-strong">
+                          &gt;
+                        </span>
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
 
                   {projeto.captura && (
                     <figure className="mt-10">
@@ -260,62 +312,30 @@ export default function Home() {
                           {projeto.legendaCaptura}
                         </figcaption>
                       )}
-                    </figure>
-                  )}
-
-                  {(projeto.ficha || projeto.paleta || projeto.links.length > 0) && (
-                    <dl className="mt-6 grid gap-x-12 gap-y-6 border-t border-rule pt-4 sm:grid-cols-2 lg:grid-cols-4">
-                      {projeto.ficha?.map(([rotulo, valor]) => (
-                        <div key={rotulo}>
-                          <dt className="text-[0.7rem] text-dim uppercase">{rotulo}</dt>
-                          <dd className="mt-1.5 text-[0.875rem] text-ink">{valor}</dd>
-                        </div>
-                      ))}
 
                       {projeto.paleta && (
-                        <div>
-                          <dt className="text-[0.7rem] text-dim uppercase">paleta</dt>
-                          <dd className="mt-1.5">
-                            <span className="flex h-8 border border-rule">
-                              {projeto.paleta.map((cor) => (
-                                <span
-                                  key={cor.hex}
-                                  aria-hidden="true"
-                                  className="flex-1 border-r border-rule last:border-r-0"
-                                  style={{ backgroundColor: cor.hex }}
-                                />
-                              ))}
-                            </span>
-                            <span className="mt-1.5 grid grid-cols-2 gap-x-3 gap-y-1">
-                              {projeto.paleta.map((cor) => (
-                                <span key={cor.hex} className="text-[0.7rem] leading-snug">
-                                  <span className="text-dim">{cor.nome} </span>
-                                  <span className="text-ink tabular-nums">{cor.hex}</span>
-                                </span>
-                              ))}
-                            </span>
-                          </dd>
-                        </div>
-                      )}
-
-                      {projeto.links.length > 0 && (
-                        <div>
-                          <dt className="text-[0.7rem] text-dim uppercase">links</dt>
-                          <dd className="mt-1.5 flex flex-wrap gap-x-4 gap-y-1 text-[0.875rem]">
-                            {projeto.links.map((link) => (
-                              <a
-                                key={link.href}
-                                className="text-ink underline underline-offset-4 hover:text-amber"
-                                href={link.href}
-                                rel="noreferrer"
-                              >
-                                {link.rotulo}
-                              </a>
+                        <div className="mt-5 border-t border-rule pt-4">
+                          <span className="flex h-10 border border-rule">
+                            {projeto.paleta.map((cor) => (
+                              <span
+                                key={cor.hex}
+                                aria-hidden="true"
+                                className="flex-1 border-r border-rule last:border-r-0"
+                                style={{ backgroundColor: cor.hex }}
+                              />
                             ))}
-                          </dd>
+                          </span>
+                          <span className="mt-2 grid grid-cols-2 gap-x-4 gap-y-1 sm:grid-cols-4">
+                            {projeto.paleta.map((cor) => (
+                              <span key={cor.hex} className="text-[0.7rem] leading-snug">
+                                <span className="text-dim">{cor.nome} </span>
+                                <span className="text-ink tabular-nums">{cor.hex}</span>
+                              </span>
+                            ))}
+                          </span>
                         </div>
                       )}
-                    </dl>
+                    </figure>
                   )}
 
                 </article>

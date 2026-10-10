@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-10-10T21:40:00-03:00",
+  "generatedAt": "2026-10-11T00:10:00-03:00",
   "title": "Design System: Hiarley C. da Silva · portfólio",
   "extensions": {
     "colorMeta": {
@@ -160,9 +160,9 @@
     {
       "name": "Painel de readout",
       "kind": "custom",
-      "description": "Figura assinatura da dobra: um dl de duas colunas (etapa em dim, o que ela faz em ink), régua de 1px entre as linhas, moldura de 1px e surface coberto pela retícula de pontilhado ordenado. A retícula é textura, não medição; os passos vêm do pipeline real.",
-      "html": "<dl class=\"ds-readout\"><div><dt>serviços efêmeros</dt><dd>postgres, redis, qdrant, s3 e smtp subindo do zero a cada corrida</dd></div></dl>",
-      "css": ".ds-readout { display: block; background: #131311; background-image: url(\"data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='8' height='8'><g fill='%232a2a26'><rect x='0' y='0' width='1' height='1'/></g></svg>\"); background-size: 8px 8px; border: 1px solid #2a2a26; border-radius: 0; } .ds-readout > div { display: grid; gap: 0 2rem; padding: 0.75rem 1.5rem; border-top: 1px solid #2a2a26; font-size: 0.875rem; } .ds-readout > div:first-child { border-top: 0; } .ds-readout dt { color: #9c9c92; } .ds-readout dd { color: #edede5; }"
+      "description": "dl tabular em painel de 1px: duas instâncias. Na dobra fala de resultado (quatro linhas, 'o que eu entrego') e leva a retícula de pontilhado; em #experiencia mostra o mecanismo (cinco etapas da esteira de release) sem a retícula. Nenhuma figura simula medição.",
+      "html": "<figure class=\"ds-readout\"><div class=\"ds-readout-topo\"><span>o que eu entrego</span><span>em produção</span></div><dl><div><dt>plataforma em escala</dt><dd>mais de 30 mil usuários, sem gargalo na operação</dd></div></dl><figcaption>Resultado antes de mecanismo…</figcaption></figure>",
+      "css": ".ds-readout-topo { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0 1.5rem; font-size: 0.75rem; } .ds-readout-topo > span:first-child { color: #edede5; text-transform: uppercase; letter-spacing: 0.08em; } .ds-readout-topo > span:last-child { color: #9c9c92; } .ds-readout dl { margin-top: 1rem; background: #131311; background-image: url(\"data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='8' height='8'><g fill='%232a2a26'><rect x='0' y='0' width='1' height='1'/></g></svg>\"); background-size: 8px 8px; border: 1px solid #2a2a26; } .ds-readout dl > div { display: grid; gap: 0 2rem; padding: 0.75rem 1.5rem; border-top: 1px solid #2a2a26; font-size: 0.875rem; } .ds-readout dl > div:first-child { border-top: 0; } .ds-readout dt { color: #9c9c92; } .ds-readout dd { color: #edede5; } .ds-readout figcaption { margin-top: 0.75rem; border-top: 1px solid #2a2a26; padding-top: 0.75rem; font-size: 0.75rem; color: #9c9c92; max-width: 76ch; }"
     },
     {
       "name": "Masthead",
@@ -179,11 +179,18 @@
       "css": ".ds-titulo { font-size: clamp(1.75rem, 4.6vw, 2.75rem); line-height: 1; text-transform: uppercase; font-weight: 400; color: #edede5; } @media (prefers-reduced-motion: reduce) { .ds-titulo span { animation: none; } }"
     },
     {
-      "name": "Moldura de captura",
+      "name": "Ficha de projeto",
       "kind": "custom",
-      "description": "A captura do site entregue à Tavares Odontologia dentro da mesma moldura de 1px, abaixo da paleta do projeto, com a proveniência na legenda.",
-      "html": "<figure class=\"ds-captura\"><ul class=\"ds-paleta\"><li><div style=\"background:#122B27\"></div><p>ink <span>#122B27</span></p></li></ul><img src=\"/amostras/tavares-odontologia.png\" alt=\"Captura da página inicial da Tavares Odontologia…\" width=\"2561\" height=\"1380\"><figcaption>paleta e captura da página entregue · captura do autor em 09/10/2026, do deploy em lp-tavares.vercel.app · no ar em tavaresodontologiactga.com.br</figcaption></figure>",
-      "css": ".ds-captura img { display: block; width: 100%; border: 1px solid #2a2a26; border-radius: 0; } .ds-captura figcaption { margin-top: 0.75rem; border-top: 1px solid #2a2a26; padding-top: 0.75rem; font-size: 0.75rem; color: #9c9c92; }"
+      "description": "Faixa de metadados que abre cada projeto: grade de até quatro colunas com rótulo em micro e valor em 0.875rem; as células são papel, entrega, stack e links (sublinhados, com marca de ação).",
+      "html": "<dl class=\"ds-ficha\"><div><dt>papel</dt><dd>frontend, deploy e DNS</dd></div></dl>",
+      "css": ".ds-ficha { display: grid; gap: 1.25rem 3rem; border-top: 1px solid #2a2a26; padding-top: 1rem; } .ds-ficha dt { font-size: 0.7rem; color: #9c9c92; text-transform: uppercase; } .ds-ficha dd { margin-top: 0.375rem; font-size: 0.875rem; color: #edede5; } @media (min-width: 640px) { .ds-ficha { grid-template-columns: repeat(2, minmax(0, 1fr)); } } @media (min-width: 1024px) { .ds-ficha { grid-template-columns: repeat(4, minmax(0, 1fr)); } }"
+    },
+    {
+      "name": "Captura e paleta",
+      "kind": "custom",
+      "description": "Captura do cliente em largura cheia, sem corte e na proporção do arquivo, com legenda de origem; a paleta entregue vira faixa de 40px com quatro segmentos iguais e nome e hex embaixo.",
+      "html": "<figure class=\"ds-caso\"><img src=\"/amostras/tavares-odontologia.png\" alt=\"Captura da página inicial da Tavares Odontologia\"><figcaption>captura do autor em 09/10/2026</figcaption><div class=\"ds-paleta\"><span style=\"background:#122B27\"></span><span style=\"background:#F3F0E8\"></span><span style=\"background:#C7A45E\"></span><span style=\"background:#E86F54\"></span></div></figure>",
+      "css": ".ds-caso img { display: block; width: 100%; height: auto; border: 1px solid #2a2a26; } .ds-caso figcaption { margin-top: 0.5rem; font-size: 0.75rem; color: #9c9c92; } .ds-paleta { display: flex; height: 40px; margin-top: 1.25rem; border: 1px solid #2a2a26; } .ds-paleta span { flex: 1; } .ds-paleta span + span { border-left: 1px solid #2a2a26; }"
     }
   ],
   "narrative": {
@@ -222,6 +229,16 @@
         "name": "Movimento autoral, uma vez por elemento",
         "body": "Três dispositivos, todos do vocabulário do mundo e disparados uma única vez: a dobra liga (power-on de 620ms), cada título decodifica ao entrar (620ms) e o nome tem glitch de registro no hover. Nada de entrada repetida por seção, e com prefers-reduced-motion nada disso monta.",
         "section": "elevation"
+      },
+      {
+        "name": "Nada de duas colunas desiguais",
+        "body": "Um bloco de projeto é coluna única: resumo, ficha, grade 2x2 e captura. Quando uma coluna curta fica ao lado de uma longa, a curta deixa buraco e a longa vira muro de texto.",
+        "section": "layout"
+      },
+      {
+        "name": "Resultado abre, mecanismo aprofunda",
+        "body": "A dobra fala de efeito em produção; o registro técnico (etapas de pipeline, nomes de serviço) mora em #experiencia, onde quem quer o detalhe vai olhar. Jargão não gasta o metro quadrado mais caro da página.",
+        "section": "typography"
       }
     ],
     "dos": [

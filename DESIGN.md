@@ -132,7 +132,7 @@ A hierarquia vem de escala, caixa e tinta — a face tem um peso só, então pes
 
 Um container de `max-width: 1180px` com `padding` de `1.25rem` (2rem a partir de `sm`). Cada seção fecha com uma régua de 1px e respira `clamp(3.5rem, 5vw, 5rem)` no eixo vertical; o hero usa o mesmo ritmo, com o topo um pouco maior.
 
-As colunas são assimétricas de propósito: a experiência é uma grade de 12 com o bloco da empresa em 3 e o log do cargo em 9; o projeto divide 5 (resumo e links) com 7 (itens); a captura do cliente ocupa a largura do container, dentro da moldura de 1px.
+As colunas são assimétricas de propósito: a experiência é uma grade de 12 com o bloco da empresa em 3 e o log do cargo em 9. O projeto é um bloco de coluna única, sempre na mesma ordem: resumo com medida de 72ch, faixa de metadados em até quatro colunas (papel, entrega, stack e links), grade 2×2 de itens e, quando existe, a captura em largura cheia com a paleta em faixa logo abaixo. Duas regras verticais nunca nascem de um layout de duas colunas desiguais: o que alinha é a régua de 1px abrindo cada bloco.
 
 Breakpoints do Tailwind: `sm` 640, `md` 768, `lg` 1024. O hero mantém nome, papel, prova, CTA e o painel de readout dentro dos primeiros 900px em desktop.
 
@@ -175,6 +175,16 @@ Barra fixa no topo com fundo do ground, régua inferior de 1px, um link `início
 A figura da dobra: um `dl` com cinco linhas em duas colunas (etapa em `dim` na coluna de 4, o que ela faz em `ink` na de 8), régua de 1px entre as linhas, moldura de 1px e o fundo de `surface` coberto pela **retícula de pontilhado ordenado** (`.reticula`, tile SVG de 8x8 px em `--color-rule`, `background-size: 8px 8px`). A retícula é textura de impressão do mundo: não codifica número nenhum, e a legenda diz que os passos vêm do pipeline real, sem valor de amostra.
 
 A mesma forma serve a qualquer conteúdo tabular da página; nenhuma figura simula medição.
+
+**Dois usos, dois registros.** Na dobra, o readout fala de resultado (`o que eu entrego`, quatro linhas) e leva a retícula. Em `#experiencia`, o mesmo componente mostra o mecanismo (`Esteira de release`, cinco linhas de pipeline) **sem** a retícula, como prova do que sustenta a dobra. Fechadura: registro técnico nunca abre a página; ele mora onde quem quer o detalhe vai olhar.
+
+### Ficha de projeto
+
+A faixa de metadados que abre cada projeto: um `dl` em grade de até quatro colunas, com o rótulo em micro (`0.7rem`, `dim`, caixa alta) e o valor em `0.875rem` na tinta. As células são papel, entrega, stack e links — os links em `ink`, sublinhados com offset de 4px e um `->` `aria-hidden` como marca de ação, sem trocar de cor (o âmbar continua sendo só a ação primária do site).
+
+### Captura e paleta
+
+A captura do cliente entra em largura cheia dentro da moldura de 1px, **sem corte e sem esticar**: a proporção é a do arquivo. A legenda de origem fica logo abaixo, em `0.75rem`. A paleta entregue aparece como uma faixa de 40px com quatro segmentos iguais e a lista de nome e hex em `0.7rem` embaixo — cor em bloco, legível à distância, nunca em quadradinhos.
 
 ### Título que decodifica
 

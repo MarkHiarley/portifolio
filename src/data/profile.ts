@@ -47,6 +47,8 @@ export type Empresa = {
   local: string;
   modelo: string;
   periodo: string;
+  /** Quando true, a esteira de release (releaseDaPlataforma) entra como prova da empresa. */
+  mostraEsteira?: boolean;
   cargos: Cargo[];
 };
 
@@ -56,6 +58,7 @@ export const experiencia: Empresa[] = [
     local: "Campinas, SP",
     modelo: "remoto",
     periodo: "ago 2025 → hoje",
+    mostraEsteira: true,
     cargos: [
       {
         titulo: "Software Engineer (Platform)",
@@ -108,8 +111,25 @@ export const experiencia: Empresa[] = [
 ];
 
 /**
- * A esteira de release, como ela realmente é: nenhum valor de amostra, só os
- * passos e serviços que o pipeline executa (fonte: CV do autor).
+ * A dobra fala de resultado. O mecanismo fica em `releaseDaPlataforma`, que
+ * aparece em #experiencia como prova de como isso é sustentado.
+ */
+export const entregaDaPlataforma = {
+  titulo: "o que eu entrego",
+  contexto: "em produção",
+  legenda:
+    "Resultado antes de mecanismo: cada linha é um efeito em produção. O como está na experiência e nos projetos.",
+  linhas: [
+    ["plataforma em escala", "mais de 30 mil usuários, sem gargalo na operação"],
+    ["dados isolados por cliente", "cada empresa vê só o que é dela, no padrão que enterprise exige"],
+    ["release sem queda", "toda novidade é validada contra o ambiente real antes de ir ao ar"],
+    ["custo sob controle", "automações que cortaram até 80% do custo operacional de clientes"],
+  ],
+} as const;
+
+/**
+ * O mecanismo da esteira de release, como ele realmente é: nenhum valor de
+ * amostra, só os passos e serviços que o pipeline executa (fonte: CV do autor).
  */
 export const releaseDaPlataforma = {
   titulo: "Esteira de release",
@@ -178,8 +198,9 @@ export const projetos: Projeto[] = [
       { rotulo: "github.com/MarkHiarley/lp-tavares", href: "https://github.com/MarkHiarley/lp-tavares" },
     ],
     ficha: [
+      ["papel", "frontend, deploy e DNS"],
       ["entrega", "landing page estática, publicada"],
-      ["stack", "HTML · CSS · JavaScript · Vercel · DNS no Cloudflare"],
+      ["stack", "HTML · CSS · JavaScript · Vercel · Cloudflare"],
     ],
     legendaCaptura: "captura do autor em 09/10/2026, do deploy em lp-tavares.vercel.app",
     captura: {
