@@ -53,7 +53,7 @@ function Readout({
 }: {
   titulo: string;
   contexto: string;
-  legenda: string;
+  legenda?: string;
   linhas: readonly (readonly [string, string])[];
   reticulado?: boolean;
 }) {
@@ -76,9 +76,11 @@ function Readout({
           </div>
         ))}
       </dl>
-      <figcaption className="mt-3 border-t border-rule pt-3 text-xs text-dim">
-        <span className="block max-w-[76ch]">{legenda}</span>
-      </figcaption>
+      {legenda && (
+        <figcaption className="mt-3 border-t border-rule pt-3 text-xs text-dim">
+          <span className="block max-w-[76ch]">{legenda}</span>
+        </figcaption>
+      )}
     </figure>
   );
 }
@@ -222,7 +224,6 @@ export default function Home() {
                       <Readout
                         titulo={releaseDaPlataforma.titulo}
                         contexto={releaseDaPlataforma.contexto}
-                        legenda={releaseDaPlataforma.legenda}
                         linhas={releaseDaPlataforma.linhas}
                       />
                     </div>

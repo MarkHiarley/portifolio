@@ -134,8 +134,6 @@ export const entregaDaPlataforma = {
 export const releaseDaPlataforma = {
   titulo: "Esteira de release",
   contexto: "Chatvolt · GitHub Actions · infraestrutura efêmera",
-  legenda:
-    "O que a esteira executa antes de publicar. Os serviços e os passos vêm do pipeline real descrito no CV; não há número de amostra nesta figura.",
   linhas: [
     ["serviços efêmeros", "postgres, redis, qdrant, s3 e smtp subindo do zero a cada corrida"],
     ["build de produção", "validado no mesmo artefato que vai para o ar"],
